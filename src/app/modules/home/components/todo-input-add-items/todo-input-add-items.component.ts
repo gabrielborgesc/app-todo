@@ -12,13 +12,16 @@ export class TodoInputAddItemsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Output() public emmitItemTaskList = new EventEmitter()
+  @Output() public emitItemTaskList = new EventEmitter()
 
   public taskDescription: string = "";
 
   public callAddItem(){
-    this.emmitItemTaskList.emit(this.taskDescription)
-    this.taskDescription="";
+    this.taskDescription = this.taskDescription.trim() //remove os espaços do inicio e do final
+    if(this.taskDescription){
+      this.emitItemTaskList.emit(this.taskDescription)
+      this.taskDescription="";
+    }
   }
 
 }
