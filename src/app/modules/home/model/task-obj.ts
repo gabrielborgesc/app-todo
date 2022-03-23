@@ -1,4 +1,4 @@
-export interface TaskList {
+export interface TaskObj {
     task: string,
     checked: boolean
 }
