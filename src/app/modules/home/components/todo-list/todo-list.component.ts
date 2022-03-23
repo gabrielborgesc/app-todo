@@ -11,8 +11,6 @@ export class TodoListComponent implements OnInit {
   constructor() { }
 
   public taskList: Array< TaskList > = [
-    {task: "task1", checked: true},
-    {task: "task2", checked: false},
   ]
 
   ngOnInit(): void {
@@ -27,6 +25,10 @@ export class TodoListComponent implements OnInit {
     if(confirm){
       this.taskList = []
     }
+  }
+
+  public addItem(taskDescription: string){
+    this.taskList.push({task: taskDescription, checked: false})
   }
 
 }
