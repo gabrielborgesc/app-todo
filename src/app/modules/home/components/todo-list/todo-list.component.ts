@@ -9,12 +9,12 @@ import { TaskObj } from '../../model/task-obj';
 export class TodoListComponent implements OnInit {
 
   constructor() { }
-
-  public taskList: Array< TaskObj > = [
-  ]
-
+  
   ngOnInit(): void {
+    this.taskList = JSON.parse(localStorage.getItem("taskList") || '[]')
   }
+
+  public taskList: Array< TaskObj > = []
 
   public deleteItemFromTaskList(item: TaskObj){
     const index = this.taskList.indexOf(item)
@@ -34,6 +34,7 @@ export class TodoListComponent implements OnInit {
 
   public sortedTaskList() : Array<TaskObj> {
     this.taskList.sort(this.compareChecked)
+    localStorage.setItem("taskList", JSON.stringify(this.taskList))
     return this.taskList;
   }
   
